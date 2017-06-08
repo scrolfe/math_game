@@ -79,3 +79,69 @@ body {
     width: 100%;
     background-color: rgb(47, 24, 7);
 }
+/*All seating*/
+.token-seat {
+
+}
+/*Tables by side of table*/
+#left-families_left-token-slots{
+
+}
+#left-families_right-token-slots{
+
+}
+#right-families_left-token-slots{
+
+}
+#right-families_right-token-slots{
+
+}
+/*Precise seats*/
+#top-left-family_top-left-token-seat {
+
+}
+#top-left-family_bottom-left-token-seat{
+
+}
+#bottom-left-family_top-left-token-seat{
+
+}
+#bottom-left-family_bottom-left-token-seat{
+
+}
+#top-left-family_top-right-token-seat{
+
+}
+#top-left-family_bottom-right-token-seat{
+
+}
+#bottom-left-family_top-right-token-seat{
+
+}
+#bottom-left-family_bottom-right-token-seat{
+
+}
+#top-right-family_top-left-token-seat{
+
+}
+#top-right-family_bottom-left-token-seat{
+
+}
+#bottom-right-family_top-left-token-seat{
+
+}
+#bottom-right-family_bottom-left-token-seat{
+
+}
+#top-right-family_top-right-token-seat{
+
+}
+#top-right-family_bottom-right-token-seat{
+
+}
+#bottom-right-family_top-right-token-seat{
+
+}
+#bottom-right-family_bottom-right-token-seat{
+
+}
