@@ -81,7 +81,11 @@ body {
 }
 /*All seating*/
 .token-seat {
-
+    margin: .5em 0 .5em 0;
+    height: 5em;
+    width: 7em;
+    background-color: rgb(164, 144, 58);
+    border-radius: 30px;
 }
 /*Tables by side of table*/
 #left-families_left-token-slots{
@@ -95,6 +99,12 @@ body {
 }
 #right-families_right-token-slots{
 
+}
+.parent2 {
+    height: 40em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 /*Precise seats*/
 #top-left-family_top-left-token-seat {
