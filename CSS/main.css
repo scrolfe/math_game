@@ -1,4 +1,25 @@
+* {
+
+}
 body {
     font-family: 'Noto Sans', sans-serif;
     background-color: rgb(255, 174, 143);
+}
+.overall {
+
+}
+.primary-words {
+
+}
+#message-box {
+
+}
+#directions-box {
+
+}
+.tokens {
+
+}
+.families {
+
 }
