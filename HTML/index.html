@@ -3,47 +3,74 @@
     <head>
         <meta charset="utf-8">
         <title>Combining Like Terms Game</title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/main.css">
         <script type="text/javascript" src="../JS/jquery-3.2.1.min.js"></script>
     </head>
     <body>
-        <div class="overall container">
+        <div class="overall container-fluid">
             <!-- This contains instructions -->
             <div class="primary-words row">
-                <h1 id="message-box">Welcome to the Family Banquet Hall!</h1>
-                <p id="directions-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div class="col-md-12">
+
+                    <h1 id="msg0000" class="message-box">Welcome to the Banquet Hall!</h1>
+                    <p id="dir0000" class="directions-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <h1 id="msg0001" style="display:none" class="message-box">Heading 2</h1>
+                    <p id="dir0001" style="display:none" class="directions-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <h1 id="msg0002" style="display:none" class="message-box">Message 3</h1>
+                    <p id="dir0002" style="display:none" class="directions-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <h1 id="msg0002" style="display:none" class="message-box">Message 4</h1>
+                    <p id="dir0002" style="display:none" class="directions-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <h1 id="msg0002" style="display:none" class="message-box">Message 5</h1>
+                    <p id="dir0002" style="display:none" class="directions-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                </div>
             </div>
-            <!-- These divs represent "banquet guests who need to be seated" -->
+            <!-- These divs represent banquet guests who need to be seated -->
             <!-- by the user who is the host -->
             <div class="tokens row">
                 <div id="margin0001" class="col-md-1"></div>
-                <div class="col-md-10">
-
+                <div class="parent col-md-10">
+                    <div id="token0001" class="token"></div>
+                    <div id="token0002" class="token"></div>
+                    <div id="token0003" class="token"></div>
+                    <div id="token0004" class="token"></div>
+                    <div id="token0005" class="token"></div>
+                    <div id="token0006" class="token"></div>
+                    <div id="token0007" class="token"></div>
+                    <div id="token0008" class="token"></div>
                 </div>
                 <div id="margin0002" class="col-md-1"></div>
             </div>
             <!-- These divs represent family tables at the banquet-->
             <div class="families row">
-                <div id="margin0003" class="col-md-2"></div>
+                <div id="margin0003" class="col-md-1"></div>
                 <div id="left-families_left-token-slots" class="col-md-1">
 
                 </div>
-                <div id="left-families" class="col-md-2">
-
+                <div class="left-families col-md-2">
+                    <div class="family" id="top-left-family"></div>
+                    <div class="family" id="bottom-left-family"></div>
                 </div>
                 <div id="left-families_right-token-slots" class="col-md-1">
 
                 </div>
+                <div id="margin0004" class="middle-margin col-md-2"></div>
                 <div id="right-families_left-token-slots" class="col-md-1">
 
                 </div>
-                <div id="right-families" class="col-md-2">
-
+                <div class="right-families col-md-2">
+                    <div class="family" id="top-right-family"></div>
+                    <div class="family" id="bottom-right-family"></div>
                 </div>
                 <div id="right-families_right-token-slots" class="col-md-1">
 
                 </div>
-                <div id="margin0004" class="col-md-2"></div>
+                <div id="margin0005" class="col-md-1"></div>
             </div>
         </div>
 

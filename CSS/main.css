@@ -11,19 +11,71 @@ body {
 .primary-words {
     color: rgb(22, 5, 47);
 }
-#message-box {
+.message-box {
     text-align: center;
     border-radius: 5px;
 }
-#directions-box {
+
+.directions-box {
     height: 5em;
     font-size: 1.5em;
     border-radius: 5px;
-
 }
+
+/*Tokens row*/
 .tokens {
     height: 9em;
+
+}
+.parent {
+    display: flex;
+    justify-content: space-between;
+
+}
+/*Individual tokens*/
+.token {
+    margin: .25em;
+    height: 7.5em;
+    width: 10em;
+    background-color: rgb(63, 120, 60);
+    border-radius: 10px;
 }
 .families {
-    height: 31em;
+    height: 40em;
+}
+.left-families {
+    padding: 0;
+}
+.right-families {
+    padding: 0;
+}
+.family {
+
+    padding: 0;/*height: 100%;*/
+}
+#left-families {
+    height: 100%;
+    /*margin: 15px;*/
+}
+#top-left-family {
+    height: 20em;
+    width: 100%;
+    background-color: rgb(47, 24, 7);
+}
+#bottom-left-family {
+    margin-top: 10px;
+    height: 20em;
+    width: 100%;
+    background-color: rgb(47, 24, 7);
+}
+#top-right-family {
+    height: 20em;
+    width: 100%;
+    background-color: rgb(47, 24, 7);
+}
+#bottom-right-family {
+    margin-top: 10px;
+    height: 20em;
+    width: 100%;
+    background-color: rgb(47, 24, 7);
 }
