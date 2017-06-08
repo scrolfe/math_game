@@ -1,25 +1,29 @@
 * {
-
+    border: 1px solid white;
 }
 body {
     font-family: 'Noto Sans', sans-serif;
-    background-color: rgb(255, 174, 143);
+    background-color: black
 }
 .overall {
-
+    background-color: rgb(69, 12, 0);
 }
 .primary-words {
-
+    color: rgb(22, 5, 47);
 }
 #message-box {
-
+    text-align: center;
+    border-radius: 5px;
 }
 #directions-box {
+    height: 5em;
+    font-size: 1.5em;
+    border-radius: 5px;
 
 }
 .tokens {
-
+    height: 9em;
 }
 .families {
-
+    height: 31em;
 }
