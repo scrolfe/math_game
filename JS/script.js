@@ -34,3 +34,8 @@ var game = {
 };
 game.currentMessage();
 game.currentDirections();
+
+var draggableTokens = function () {
+    $('.token').draggable();
+}
+draggableTokens();
