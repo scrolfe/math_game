@@ -25,12 +25,10 @@ body {
 /*Tokens row*/
 .tokens {
     height: 9em;
-    
 }
 .parent {
     display: flex;
     justify-content: space-between;
-
 }
 /*Individual tokens*/
 .token {
@@ -40,8 +38,26 @@ body {
     background-color: rgb(63, 120, 60);
     border-radius: 10px;
     /*font-size: 1.5em;*/
-    color: rgb(15, 29, 18)
-
+    color: rgb(15, 29, 18);
+}
+.coefficient {
+    font-size: 40px;
+    margin-left: 30%;
+    margin-top:15%;
+}
+.variable {
+    font-size: 40px;
+    margin-top:15%;
+}
+.degree {
+    font-size: 40px;
+    margin-top:15%;
+}
+.non-coef {
+    margin-left: 10%;
+}
+.non-variable {
+    margin-left: 40%;
 }
 .families {
     height: 40em;
