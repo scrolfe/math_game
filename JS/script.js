@@ -46,7 +46,6 @@ var activateTokenSeat = function (event, ui) {
 //stop drag reaction when not being dragged anymore
 var deactivateTokenSeat = function (event, ui) {
     $('.token-seat').on('dropdeactivate', function(event, ui) {
-        console.log('bunny')
         $('.token-seat').css('height', '5em')
     })
 }
@@ -56,6 +55,11 @@ var draggableTokens = function () {
     $('.token').draggable({
         //make cursor change icons on click+drag
         cursor: 'move',
+        cursorAt: {left: 75, top: 50},
+        revert: true,
+        // scroll: true,
+        // scrollSensitivity: 25,
+        // scrollSpeed: 25,
         //make cursor prefer edges of .token-seat div
         snap: '.token-seat'
     });
@@ -74,14 +78,25 @@ var droppableTokenSeats = function () {
 //call droppability of token-seats
 droppableTokenSeats();
 
+//change token seats to be circular and take term when token drops
+var tokenDropped = function (event, ui) {
+    $('.token-seat').on('droppabledrop', function (event, ui) {
+        console.log('testing')
+        // $('.token').hide()
+        // $('.token-seat').css('border-radius', '300px')
+        // $('.token-seat').css('background-color', 'purple')
+    })
+}
 
-//make individual seats change when terms are dropped on them
-// var tokenSeatReactToDrop = function (event, ui) {
-//     //for loop which causes below occurrence on individual token-seat
-//     for (var i = 0; i < $('token-seat').length; i++) {
-//         $('.token-seat').eq(i).on('drop', function(event, ui){
-//             $('.token-seat').css('border-radius', '300px')
-//             }
-//         )
-//     }
-// }
+var tokenOverSeat = function (event, ui) {
+    $('.token-seat').on('droppableover', function (event, ui) {
+        console.log('thing')
+    })
+}
+//make function for droppable circularity
+    //for each token-seats
+        //if token drops to seat
+            //hide token
+            //make token-seat border radius 300px
+            //change token-seat color
+            //have token-seat adopt dropped token's term
