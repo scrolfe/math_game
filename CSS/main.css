@@ -25,7 +25,7 @@ body {
 /*Tokens row*/
 .tokens {
     height: 9em;
-
+    
 }
 .parent {
     display: flex;
