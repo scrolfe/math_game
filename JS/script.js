@@ -95,34 +95,32 @@ var draggableTokens = function () {
 };
 //initiate dragable
 draggableTokens();
-//main jquery ui dropable elements hub
+
+//main jquery ui droppable elements hub
+
 var droppableTokenSeats = function () {
-    $('.token-seat').droppable({
-        //should make token-seat accept token
-        accept: '.token',
-        //method (see activate...() above)
-        activate: activateTokenSeat(),
-        //method (see deactivate...() above)
-        deactivate: deactivateTokenSeat(),
-        scope: '.token'
-        // over: tokenOverSeat(),
-    })
-};
-var droppableTokenSeat0001 = function () {
-    $('#top-left-family_top-left-token-seat').droppable({
-        accept: '#token0001',
-        drop: function(event, ui) {
-            alert('hello')
-            $('#token0001').hide()
-            $('#top-left-family_top-left-token-seat')
-        },
-        scope: '.token'
-})}
-droppableTokenSeat0001();
+    for (var i = 1; i < ($('.token-seat').length+1); i++) {
+        $('#token-seat' + i).droppable({
+            accept: '.token',
+            activate: activateTokenSeat(),
+            deactivate: deactivateTokenSeat(),
+            drop: function(event, ui) {
+                $('.ui-draggable-dragging').hide()
+                $('#token-seat1').css('visibility', 'hidden')
+            },
+            scope: '.token'
+        }
+    )
+}};
+
+// var tokenContents; //get token
+// $('#token-seat0001').append('<div>'+
+// $('#token-seat0001').css($('token-seat0001'))
+
 //call droppability of token-seats
 droppableTokenSeats();
 
-//make function for droppable circularity                                           H
+//make function for making droppable circular                                           H
     //for each token-seats                                                          o
         //if token drops to seat                                                    w
             //hide token
