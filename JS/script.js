@@ -52,16 +52,13 @@ game.currentDirections();
 
 //change token seats to be circular, change color, and take term when token drops
 // var tokenDropped = function (event, ui) {
-//     $('.token-seat').on('droppabledrop', function (event, ui) {
-//         console.log('testing')
+//     $('.token').on('drop', function (event, ui) {
+//         alert('test')
 //         // $('.token').hide()
 //         // $('.token-seat').css('border-radius', '300px')
 //         // $('.token-seat').css('background-color', 'purple')
 //     })
 // }
-
-
-
 
 //-----
 //all tokens and token-seats
@@ -82,29 +79,18 @@ var deactivateTokenSeat = function (event, ui) {
         $('.token-seat').css('height', '5em')
     })
 }
-//detect when token hovers over a seat and react to this
-// var tokenOverSeat = function (event, ui) {
-//     $('.token-seat').on('dropover', function (event, ui) {
-//         console.log('thing')
-//         $('.token-seat')
-//     })
-// }
-//
+
 //main jquery ui draggable elements hub
 var draggableTokens = function () {
     $('.token').draggable({
         //make cursor change to crosshair icon on drag
         cursor: 'move',
         //make cursor stay in middle of token
-        cursorAt: {left: 75, top: 50},
+        cursorAt: {left: 37, top: 25},
         //have token return to position on release
         revert: true,
-        //set dragging to cause window scrolling if need be (didn't have much effect)
-        // scroll: true,
-        // scrollSensitivity: 25,
-        // scrollSpeed: 25,
-        //make cursor prefer edges of .token-seat div (a little clunky)
-        // snap: '.token-seat'
+        scope: '.token',
+        stack: '.token'
     });
 };
 //initiate dragable
@@ -118,10 +104,21 @@ var droppableTokenSeats = function () {
         activate: activateTokenSeat(),
         //method (see deactivate...() above)
         deactivate: deactivateTokenSeat(),
-        // drop: tokenDropped(),
+        scope: '.token'
         // over: tokenOverSeat(),
     })
 };
+var droppableTokenSeat0001 = function () {
+    $('#top-left-family_top-left-token-seat').droppable({
+        accept: '#token0001',
+        drop: function(event, ui) {
+            alert('hello')
+            $('#token0001').hide()
+            $('#top-left-family_top-left-token-seat')
+        },
+        scope: '.token'
+})}
+droppableTokenSeat0001();
 //call droppability of token-seats
 droppableTokenSeats();
 

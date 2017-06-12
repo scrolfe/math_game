@@ -6,10 +6,10 @@ body {
     background-color: black;
 }
 .overall {
-    background-color: rgb(69, 12, 0);
+    background-color: rgb(25, 0, 42);
 }
 .primary-words {
-    color: rgb(116, 58, 200);
+    color: rgb(71, 57, 79);
 }
 .message-box {
     text-align: center;
@@ -33,24 +33,24 @@ body {
 /*Individual tokens*/
 .token {
     margin: .25em;
-    height: 7.5em;
-    width: 10em;
-    background-color: rgb(63, 120, 60);
+    height: 3.75em;
+    width: 5em;
+    background-color: rgb(108, 0, 0);
     border-radius: 10px;
     /*font-size: 1.5em;*/
-    color: rgb(15, 29, 18);
+    color: rgb(255, 0, 0);
 }
 .coefficient {
-    font-size: 40px;
+    font-size: 20px;
     margin-left: 30%;
     margin-top:15%;
 }
 .variable {
-    font-size: 40px;
+    font-size: 20px;
     margin-top:15%;
 }
 .degree {
-    font-size: 40px;
+    font-size: 20px;
     margin-top:15%;
 }
 .non-coef {
@@ -84,35 +84,35 @@ body {
 #top-left-family {
     height: 280px;
     width: 100%;
-    background-color: rgb(47, 24, 7);
-    color: rgb(233, 120, 129)
+    background-color: rgb(60, 1, 61);
+    color: rgb(254, 195, 248)
 }
 #bottom-left-family {
     margin-top: 10px;
     height: 280px;
     width: 100%;
-    background-color: rgb(47, 24, 7);
-    color:rgb(233, 120, 129)
+    background-color: rgb(60, 1, 61);
+    color:rgb(254, 195, 248)
 }
 #top-right-family {
     height: 280px;
     width: 100%;
-    background-color: rgb(47, 24, 7);
-    color: rgb(233, 120, 129)
+    background-color: rgb(60, 1, 61);
+    color:rgb(254, 195, 248)
 }
 #bottom-right-family {
     margin-top: 10px;
     height: 280px;
     width: 100%;
-    background-color: rgb(47, 24, 7);
-    color:rgb(233, 120, 129)
+    background-color: rgb(60, 1, 61);
+    color: rgb(254, 195, 248)
 }
 /*All seating*/
 .token-seat {
     margin: .5em 0 .5em 0;
     height: 5em;
     width: 7em;
-    background-color: rgb(164, 144, 58);
+    background-color: rgb(252, 107, 92);
     border-radius: 30px;
 }
 /*Tables by side of table*/
