@@ -9,7 +9,7 @@ body {
     background-color: rgb(69, 12, 0);
 }
 .primary-words {
-    color: rgb(22, 5, 47);
+    color: rgb(116, 58, 200);
 }
 .message-box {
     text-align: center;
@@ -69,34 +69,43 @@ body {
     padding: 0;
 }
 .family {
-
+    font-family: 'Noto Sans', cursive;
+    font-size: 40px;
+    text-align: center;
     padding: 0;/*height: 100%;*/
+}
+.family-text {
+    padding-top: 100px;
 }
 #left-families {
     height: 100%;
     /*margin: 15px;*/
 }
 #top-left-family {
-    height: 20em;
+    height: 280px;
     width: 100%;
     background-color: rgb(47, 24, 7);
+    color: rgb(233, 120, 129)
 }
 #bottom-left-family {
     margin-top: 10px;
-    height: 20em;
+    height: 280px;
     width: 100%;
     background-color: rgb(47, 24, 7);
+    color:rgb(233, 120, 129)
 }
 #top-right-family {
-    height: 20em;
+    height: 280px;
     width: 100%;
     background-color: rgb(47, 24, 7);
+    color: rgb(233, 120, 129)
 }
 #bottom-right-family {
     margin-top: 10px;
-    height: 20em;
+    height: 280px;
     width: 100%;
     background-color: rgb(47, 24, 7);
+    color:rgb(233, 120, 129)
 }
 /*All seating*/
 .token-seat {

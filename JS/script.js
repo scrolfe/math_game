@@ -41,21 +41,15 @@ game.currentDirections();
 //CLICK+DRAG FUNCTIONALITY
 //\/ \/ \/ \/ \/ \/ \/ \/ \/ \/
 //make seats react to tokens being dragged
-var activateTokenSeat = function (event, ui) {
-    $('.token-seat').on('dropactivate', function(event, ui) {
-        // //make tokens teeny
-        // $('.token').css('height', '4em')
-        // $('.token').css('width', '6em')
-        //make seats taller
-        $('.token-seat').css('height', '6em')
-    })
-};
-//stop drag reaction when not being dragged anymore
-var deactivateTokenSeat = function (event, ui) {
-    $('.token-seat').on('dropdeactivate', function(event, ui) {
-        $('.token-seat').css('height', '5em')
-    })
-}
+
+
+//-----
+//individual tokens and token-seats
+//-----
+
+//activate individual token seats
+//deactivate individual token seat
+
 //change token seats to be circular, change color, and take term when token drops
 // var tokenDropped = function (event, ui) {
 //     $('.token-seat').on('droppabledrop', function (event, ui) {
@@ -65,6 +59,29 @@ var deactivateTokenSeat = function (event, ui) {
 //         // $('.token-seat').css('background-color', 'purple')
 //     })
 // }
+
+
+
+
+//-----
+//all tokens and token-seats
+//-----
+var activateTokenSeat = function (event, ui) {
+    $('.token-seat').on('dropactivate', function(event, ui) {
+        // //make tokens teeny
+        // $('.token').css('height', '4em')
+        // $('.token').css('width', '6em')
+        //make seats taller
+        $('.token-seat').css('height', '6em')
+    })
+};
+
+//stop drag reaction when not being dragged anymore
+var deactivateTokenSeat = function (event, ui) {
+    $('.token-seat').on('dropdeactivate', function(event, ui) {
+        $('.token-seat').css('height', '5em')
+    })
+}
 //detect when token hovers over a seat and react to this
 // var tokenOverSeat = function (event, ui) {
 //     $('.token-seat').on('dropover', function (event, ui) {
