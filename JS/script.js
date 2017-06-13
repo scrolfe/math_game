@@ -20,16 +20,16 @@ var game = {
         for (var i = 1; i < $('h1').length; i++) {
             //have different 'progress' provide different messages to the user
             if (game.progress === i) {
-                $('#msg000' + (i - 1)).hide()
-                $('#msg000' + i).show()
+                $('#msg' + (i - 1)).hide()
+                $('#msg' + i).show()
         }}
     },
     //same as above but for directions
     currentDirections: function () {
         for (var i = 1; i < $('p').length; i++) {
             if (game.progress === i) {
-                $('#dir000' + (i - 1)).hide()
-                $('#dir000' + i).show()
+                $('#dir' + (i - 1)).hide()
+                $('#dir' + i).show()
         }}
     },
 };
@@ -62,6 +62,16 @@ var deactivateTokenSeat = function (event, ui) {
         $('.token-seat').css('height', '5em')
     })
 }
+var checkAnswer = function () {
+    for (var i = 1; i < ($('.token-seat').length + 1); i++) {
+        if ($('.ui-draggable-dragging').data('degree')===$('#token-seat').data('degree')){
+            //outline box in green, showing correct answer
+            $('.family' + i).css('border','1px solid green')
+            } else {
+            //otherwise, outline it in red showing wrong answer
+            $('.family' + i).css('border','1px solid red')
+    }}};
+
 
 //jquery ui draggable elements main object
 var draggableTokens = function () {
@@ -90,34 +100,12 @@ var droppableTokenSeats = function () {
             deactivate: deactivateTokenSeat(),
             //causes token to stick to token seats on drop
             drop: function(event, ui) {
+                checkAnswer()
                 $(this).append($('.ui-draggable-dragging'))
                 $('.ui-draggable-dragging').css('position','static')
             },
-            scope: '.token'
-        }
-    )
-}};
+            scope: '.token',
+        })
+    }};
 //call droppable token-seats
 droppableTokenSeats();
-
-//button for answer check
-
-//function for checking answer
-var checkAnswers = function () {
-    //on button press
-    $('button').on('click', function () {
-        //for each token-seat
-        for (var i = 0; i < $('.token-seat').length; i++) {
-            console.log('loop test')
-            //if token is appended to token seat
-            if (($('#token' + i)) in ($('#token-seat' + i)) === true) {
-                console.log('test2')
-            }
-        }
-    })
-};
-checkAnswers();
-            //and if all tokens' sup(degree number) appended to token seat equal table degree number
-                //highlight table in green and diplay "correct" messageBox
-            //otherwise
-                //highlight table in dashed red and diplay "incorrect" messageBox
