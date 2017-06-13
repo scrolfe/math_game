@@ -33,36 +33,19 @@ var game = {
         }}
     },
 };
-//call message
 game.currentMessage();
-//call directions
 game.currentDirections();
+
 //\/ \/ \/ \/ \/ \/ \/ \/ \/ \/
 //CLICK+DRAG FUNCTIONALITY
 //\/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+
 //make seats react to tokens being dragged
-
-
-//-----
-//individual tokens and token-seats
-//-----
-
-//activate individual token seats
-//deactivate individual token seat
-
-//change token seats to be circular, change color, and take term when token drops
-// var tokenDropped = function (event, ui) {
-//     $('.token').on('drop', function (event, ui) {
-//         alert('test')
-//         // $('.token').hide()
-//         // $('.token-seat').css('border-radius', '300px')
-//         // $('.token-seat').css('background-color', 'purple')
-//     })
-// }
 
 //-----
 //all tokens and token-seats
 //-----
+
 var activateTokenSeat = function (event, ui) {
     $('.token-seat').on('dropactivate', function(event, ui) {
         // //make tokens teeny
@@ -80,7 +63,7 @@ var deactivateTokenSeat = function (event, ui) {
     })
 }
 
-//main jquery ui draggable elements hub
+//jquery ui draggable elements main object
 var draggableTokens = function () {
     $('.token').draggable({
         //make cursor change to crosshair icon on drag
@@ -88,7 +71,7 @@ var draggableTokens = function () {
         //make cursor stay in middle of token
         cursorAt: {left: 37, top: 25},
         //have token return to position on release
-        revert: true,
+        // revert: true,
         scope: '.token',
         stack: '.token'
     });
@@ -96,34 +79,45 @@ var draggableTokens = function () {
 //initiate dragable
 draggableTokens();
 
-//main jquery ui droppable elements hub
-
+//jquery ui droppable elements main object
 var droppableTokenSeats = function () {
+    //toggle for each token seat individually
     for (var i = 1; i < ($('.token-seat').length+1); i++) {
         $('#token-seat' + i).droppable({
             accept: '.token',
+            //following 2 make seats change on pick up and put down
             activate: activateTokenSeat(),
             deactivate: deactivateTokenSeat(),
+            //causes token to stick to token seats on drop
             drop: function(event, ui) {
-                $('.ui-draggable-dragging').hide()
-                $('#token-seat1').css('visibility', 'hidden')
+                $(this).append($('.ui-draggable-dragging'))
+                $('.ui-draggable-dragging').css('position','static')
             },
             scope: '.token'
         }
     )
 }};
-
-// var tokenContents; //get token
-// $('#token-seat0001').append('<div>'+
-// $('#token-seat0001').css($('token-seat0001'))
-
-//call droppability of token-seats
+//call droppable token-seats
 droppableTokenSeats();
 
-//make function for making droppable circular                                           H
-    //for each token-seats                                                          o
-        //if token drops to seat                                                    w
-            //hide token
-            //make token-seat border radius 300px                                   d
-            //change token-seat color                                               o
-            //have token-seat adopt dropped token's term                            ?
+//button for answer check
+
+//function for checking answer
+var checkAnswers = function () {
+    //on button press
+    $('button').on('click', function () {
+        //for each token-seat
+        for (var i = 0; i < $('.token-seat').length; i++) {
+            console.log('loop test')
+            //if token is appended to token seat
+            if (($('#token' + i)) in ($('#token-seat' + i)) === true) {
+                console.log('test2')
+            }
+        }
+    })
+};
+checkAnswers();
+            //and if all tokens' sup(degree number) appended to token seat equal table degree number
+                //highlight table in green and diplay "correct" messageBox
+            //otherwise
+                //highlight table in dashed red and diplay "incorrect" messageBox
