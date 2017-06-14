@@ -62,17 +62,18 @@ var deactivateTokenSeat = function (event, ui) {
         $('.token-seat').css('height', '5em')
     })
 }
-var checkAnswer = function () {
-    for (var i = 1; i < ($('.token-seat').length + 1); i++) {
-        if ($('.ui-draggable-dragging').data('degree')===$('#token-seat').data('degree')){
+var checkAnswer = function (seat) {
+    // for (var i = 1; i < ($('.token-seat').length + 1); i++) {
+        var correctTable = $(seat).data('degree') + 1
+        console.log(correctTable)
+        if ($('.ui-draggable-dragging').data('degree')===$(seat).data('degree')){
             //outline box in green, showing correct answer
-            $('.family' + i).css('border','1px solid green')
+            $('.family'+correctTable).css('border','1px solid green')
             } else {
             //otherwise, outline it in red showing wrong answer
-            $('.family' + i).css('border','1px solid red')
-    }}};
-
-
+            $('.family'+correctTable).css('border','1px solid red')
+    }};
+ // && $('.ui-draggable-dragging').data('degree') === $('.family'+correctTable).data('degree')
 //jquery ui draggable elements main object
 var draggableTokens = function () {
     $('.token').draggable({
@@ -89,23 +90,55 @@ var draggableTokens = function () {
 //initiate dragable
 draggableTokens();
 
-//jquery ui droppable elements main object
+// //jquery ui droppable elements main object
+// var droppableTokenSeats = function () {
+//     //toggle for each token seat individually
+//     for (var i = 1; i < ($('.token-seat').length+1); i++) {
+//         console.log(i)
+//         $('#token-seat' + i).droppable({
+//             accept: '.token',
+//             //following 2 make seats change on pick up and put down
+//             activate: activateTokenSeat(),
+//             deactivate: deactivateTokenSeat(),
+//             //causes token to stick to token seats on drop
+//             drop: function(event, ui) {
+//
+//                 //grabs token while being dragged by jquery ui class and appends it to token-seat
+//                 $(this).append($('.ui-draggable-dragging'));
+//                 //fixes token formatting so it stays on seat
+//                 $('.ui-draggable-dragging').css('position','static');
+//                 //check if dragged box html data- attr matches token-seat html data- attr
+//                 checkAnswer();
+//
+//             }
+//             },
+//             scope: '.token',
+//         })
+//     }};
+// //call droppable token-seats
+// droppableTokenSeats();
 var droppableTokenSeats = function () {
-    //toggle for each token seat individually
-    for (var i = 1; i < ($('.token-seat').length+1); i++) {
-        $('#token-seat' + i).droppable({
+    //toggle for all token seats
+        $('.token-seat').droppable({
             accept: '.token',
             //following 2 make seats change on pick up and put down
-            activate: activateTokenSeat(),
-            deactivate: deactivateTokenSeat(),
+            // activate: activateTokenSeat(),
+            // deactivate: deactivateTokenSeat(),
             //causes token to stick to token seats on drop
             drop: function(event, ui) {
-                checkAnswer()
-                $(this).append($('.ui-draggable-dragging'))
-                $('.ui-draggable-dragging').css('position','static')
+
+                //grabs token while being dragged by jquery ui class and appends it to token-seat
+                $(this).append($('.ui-draggable-dragging'));
+                console.log($(this).data('degree'))
+                console.log($('.ui-draggable-dragging').data('degree'))
+
+                //fixes token formatting so it stays on seat
+                $('.ui-draggable-dragging').css('position','static');
+
+                //check if dragged box html data- attr matches token-seat html data- attr
+                checkAnswer(this);
             },
             scope: '.token',
-        })
-    }};
+})};
 //call droppable token-seats
 droppableTokenSeats();
