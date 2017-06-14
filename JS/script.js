@@ -8,70 +8,45 @@ var game = { //Game Object: Recurring game conditions and attributes
                 $('#msg' + (i - 1)).hide()
                 $('#msg' + i).show()
                 $('#dir' + (i - 1)).hide()
-                $('#dir' + i).show()
-        }}
-    }
+                $('#dir' + i).show() }}}
 };
 game.currentMessage();
-// game.currentDirections();
-
 //\/ \/ \/ CLICK+DRAG \/ \/ \/
 var activateTokenSeat = function (event, ui) { //Seats go to expanded state when user picks up tokens
     $('.token-seat').on('dropactivate', function(event, ui) {
         $('.token-seat').css('height', '6em')
     })
 };
-
 var deactivateTokenSeat = function (event, ui) { //Seats return to original state when user drops tokens
     $('.token-seat').on('dropdeactivate', function(event, ui) {
         $('.token-seat').css('height', '5em')
     })
-}
+};
 var checkAnswer = function (seat) { //See if each token drop arrives at correct token-seats
         var correctTable = $(seat).data('degree') + 1 //current token-seat data-degree placeholder
         if ($(seat).data('degree')===$('.ui-draggable-dragging').data('degree')){ //same token/seat degree?
             $('.family' + correctTable).css('border','1px solid green') //right
             } else {
-            $('.family' + correctTable).css('border','1px solid red') //wrong
-    }};
- // && $('.ui-draggable-dragging').data('degree') === $('.family'+correctTable).data('degree')
-//jquery ui draggable elements main object
-var draggableTokens = function () {
-    $('.token').draggable({
-        //make cursor change to crosshair icon on drag
-        cursor: 'move',
-        //make cursor stay in middle of token
-        cursorAt: {left: 37, top: 25},
-        //have token return to position on release
-        revert: true,
-        scope: '.token',
-        stack: '.token'
-    });
+            $('.family' + correctTable).css('border','1px solid red')} //wrong
 };
-//initiate dragable
+var draggableTokens = function () { //token draggable attributes
+    $('.token').draggable({
+        cursor: 'move', //make cursor change to crosshair icon on drag
+        cursorAt: {left: 37, top: 25}, //make cursor stay in middle of token
+        revert: true, //have token return to position on release
+        scope: '.token', //this and below has to do with z-index
+        stack: '.token' });
+};
 draggableTokens();
-
-// droppableTokenSeats();
-var droppableTokenSeats = function () {
-    //toggle for all token seats
+var droppableTokenSeats = function () { //token-seat droppable attributes
     $('.token-seat').droppable({
         accept: '.token',
-        //following 2 make seats change on pick up and put down
-        activate: activateTokenSeat(),
+        activate: activateTokenSeat(), //seats change on pick-up and put-down
         deactivate: deactivateTokenSeat(),
-        //causes token to stick to token seats on drop
-        drop: function(event, ui) {
-
-            //grabs token jquery ui-draggable-dragging class and appends it to token-seat
-            $(this).append($('.ui-draggable-dragging'));
-
-            //reset token formatting for new token positioning
-            $('.ui-draggable-dragging').css('position','static');
-
-            //check if dragged box html data- attr matches token-seat html data- attr
-            checkAnswer(this);
-        },
-        scope: '.token',
-})};
-//call droppable token-seats
+        drop: function(event, ui) { //occurence when dropped on target
+            $(this).append($('.ui-draggable-dragging')); //appends dragged token to token seat
+            $('.ui-draggable-dragging').css('position','static'); //resets token formatting for new token positioning
+            checkAnswer(this)}, //checks for data- attr match between token and seat
+        scope: '.token', })
+};
 droppableTokenSeats();
