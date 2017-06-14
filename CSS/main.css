@@ -9,7 +9,8 @@ body {
     background-color: rgb(25, 0, 42);
 }
 .primary-words {
-    color: rgb(71, 57, 79);
+    color: rgb(255, 255, 255);
+    text-align: center;
 }
 .message-box {
     text-align: center;
