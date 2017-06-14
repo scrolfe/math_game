@@ -1,77 +1,38 @@
-//Game Object
-//Attributes that will be needed for the game/that will keep coming back
-var game = {
-    //Progress is a switch controller for the relationship between game-progress and direction on-screen
-    progress: 0,
-    //Use this to throw rewarding stimuli and prompts to provide teacher email-address to send your score
-    won: false,
-    //Possibly used to track successful attempts versus unsuccessful
-    score: 0,
-    //For tracking which tables took correctly sorted divs
-    tablesComplete: {
-        table1: false,
-        table2: false,
-        table3: false,
-        table4: false
-    },
-    //Changes the messageBox and directionsBox when the user moves to the next section
-    currentMessage: function () {
-        //loop through progresses and add index to below function to clean up code
+//Combining Like Terms Math Game
+var game = { //Game Object: Recurring game conditions and attributes
+    slide: 0, //Controls which slide is displayed in the message box
+    tablesCorrect: { table1: false, table2: false, table3: false, table4: false }, //Tracks correct tables
+    currentMessage: function () { //Changes the messageBox and directionsBox when the user moves to the next section
         for (var i = 1; i < $('h1').length; i++) {
-            //have different 'progress' provide different messages to the user
-            if (game.progress === i) {
+            if (game.slide === i) { //slide will be connected to button
                 $('#msg' + (i - 1)).hide()
                 $('#msg' + i).show()
-        }}
-    },
-    //same as above but for directions
-    currentDirections: function () {
-        for (var i = 1; i < $('p').length; i++) {
-            if (game.progress === i) {
                 $('#dir' + (i - 1)).hide()
                 $('#dir' + i).show()
         }}
-    },
+    }
 };
 game.currentMessage();
-game.currentDirections();
+// game.currentDirections();
 
-//\/ \/ \/ \/ \/ \/ \/ \/ \/ \/
-//CLICK+DRAG FUNCTIONALITY
-//\/ \/ \/ \/ \/ \/ \/ \/ \/ \/
-
-//make seats react to tokens being dragged
-
-//-----
-//all tokens and token-seats
-//-----
-
-var activateTokenSeat = function (event, ui) {
+//\/ \/ \/ CLICK+DRAG \/ \/ \/
+var activateTokenSeat = function (event, ui) { //Seats go to expanded state when user picks up tokens
     $('.token-seat').on('dropactivate', function(event, ui) {
-        // //make tokens teeny
-        // $('.token').css('height', '4em')
-        // $('.token').css('width', '6em')
-        //make seats taller
         $('.token-seat').css('height', '6em')
     })
 };
 
-//stop drag reaction when not being dragged anymore
-var deactivateTokenSeat = function (event, ui) {
+var deactivateTokenSeat = function (event, ui) { //Seats return to original state when user drops tokens
     $('.token-seat').on('dropdeactivate', function(event, ui) {
         $('.token-seat').css('height', '5em')
     })
 }
-var checkAnswer = function (seat) {
-    // for (var i = 1; i < ($('.token-seat').length + 1); i++) {
-        var correctTable = $(seat).data('degree') + 1
-        console.log(correctTable)
-        if ($('.ui-draggable-dragging').data('degree')===$(seat).data('degree')){
-            //outline box in green, showing correct answer
-            $('.family'+correctTable).css('border','1px solid green')
+var checkAnswer = function (seat) { //See if each token drop arrives at correct token-seats
+        var correctTable = $(seat).data('degree') + 1 //current token-seat data-degree placeholder
+        if ($(seat).data('degree')===$('.ui-draggable-dragging').data('degree')){ //same token/seat degree?
+            $('.family' + correctTable).css('border','1px solid green') //right
             } else {
-            //otherwise, outline it in red showing wrong answer
-            $('.family'+correctTable).css('border','1px solid red')
+            $('.family' + correctTable).css('border','1px solid red') //wrong
     }};
  // && $('.ui-draggable-dragging').data('degree') === $('.family'+correctTable).data('degree')
 //jquery ui draggable elements main object
@@ -82,7 +43,7 @@ var draggableTokens = function () {
         //make cursor stay in middle of token
         cursorAt: {left: 37, top: 25},
         //have token return to position on release
-        // revert: true,
+        revert: true,
         scope: '.token',
         stack: '.token'
     });
@@ -90,55 +51,27 @@ var draggableTokens = function () {
 //initiate dragable
 draggableTokens();
 
-// //jquery ui droppable elements main object
-// var droppableTokenSeats = function () {
-//     //toggle for each token seat individually
-//     for (var i = 1; i < ($('.token-seat').length+1); i++) {
-//         console.log(i)
-//         $('#token-seat' + i).droppable({
-//             accept: '.token',
-//             //following 2 make seats change on pick up and put down
-//             activate: activateTokenSeat(),
-//             deactivate: deactivateTokenSeat(),
-//             //causes token to stick to token seats on drop
-//             drop: function(event, ui) {
-//
-//                 //grabs token while being dragged by jquery ui class and appends it to token-seat
-//                 $(this).append($('.ui-draggable-dragging'));
-//                 //fixes token formatting so it stays on seat
-//                 $('.ui-draggable-dragging').css('position','static');
-//                 //check if dragged box html data- attr matches token-seat html data- attr
-//                 checkAnswer();
-//
-//             }
-//             },
-//             scope: '.token',
-//         })
-//     }};
-// //call droppable token-seats
 // droppableTokenSeats();
 var droppableTokenSeats = function () {
     //toggle for all token seats
-        $('.token-seat').droppable({
-            accept: '.token',
-            //following 2 make seats change on pick up and put down
-            // activate: activateTokenSeat(),
-            // deactivate: deactivateTokenSeat(),
-            //causes token to stick to token seats on drop
-            drop: function(event, ui) {
+    $('.token-seat').droppable({
+        accept: '.token',
+        //following 2 make seats change on pick up and put down
+        activate: activateTokenSeat(),
+        deactivate: deactivateTokenSeat(),
+        //causes token to stick to token seats on drop
+        drop: function(event, ui) {
 
-                //grabs token while being dragged by jquery ui class and appends it to token-seat
-                $(this).append($('.ui-draggable-dragging'));
-                console.log($(this).data('degree'))
-                console.log($('.ui-draggable-dragging').data('degree'))
+            //grabs token jquery ui-draggable-dragging class and appends it to token-seat
+            $(this).append($('.ui-draggable-dragging'));
 
-                //fixes token formatting so it stays on seat
-                $('.ui-draggable-dragging').css('position','static');
+            //reset token formatting for new token positioning
+            $('.ui-draggable-dragging').css('position','static');
 
-                //check if dragged box html data- attr matches token-seat html data- attr
-                checkAnswer(this);
-            },
-            scope: '.token',
+            //check if dragged box html data- attr matches token-seat html data- attr
+            checkAnswer(this);
+        },
+        scope: '.token',
 })};
 //call droppable token-seats
 droppableTokenSeats();
