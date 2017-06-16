@@ -5,6 +5,9 @@ body {
     font-family: 'Noto Sans', sans-serif;
     background-color: black;
 }
+h1 {
+    padding-left: 120px;
+}
 .overall {
     background-color: rgb(25, 0, 42);
 }

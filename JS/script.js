@@ -3,26 +3,29 @@ var game = { //Game Object: Recurring game conditions and attributes
     slide: 0, //Controls which slide is displayed in the message box
     tablesCorrect: { table1: 0, table2: 0, table3: 0, table4: 0 }, //Tracks correct tables
     currentMessage: function () { //Changes the messageBox and directionsBox when the user moves to the next section
-        for (var i = 1; i < $('h1').length; i++) {
-            if (game.slide === i) { //slide will be connected to button
-                $('#msg' + (i - 1)).hide()
-                $('#msg' + i).show()
-                $('#dir' + (i - 1)).hide()
-                $('#dir' + i).show() }}}
+            if (game.slide === 0) { // slide is connected to button
+                $('#msg1').hide() // hide the message before
+                $('#msg0').show() // show message on slide i
+                $('#dir1').hide() // do the same for directions
+                $('#dir0').show()
+            } else if (game.slide === 1) {
+                $('#msg0').hide() // hide the message before
+                $('#msg1').show() // show message on slide i
+                $('#dir0').hide() // do the same for directions
+                $('#dir1').show() }
+    }
 };
-var reviewButton = function () {
+var reviewButton = function () { // changes to instructional slide
     $('.button2').click(function () {
         game.slide = 1
-        game.currentMessage()
-    })
-}
-var gameButton = function () {
-    $('.button3').click(function () {
-        game.slide = 0
-        game.currentMessage()
-    })
+        game.currentMessage() })
 }
 reviewButton();
+var gameButton = function () { // changes to game directions slide
+    $('.button3').click(function () {
+        game.slide = 0
+        game.currentMessage() })
+}
 gameButton();
 var tableCompletion = function () { // Checks is 1 or all tables are correct and complete
     for (var i = 1; i < $('.family').length + 1; i++) {
@@ -30,9 +33,10 @@ var tableCompletion = function () { // Checks is 1 or all tables are correct and
             $('.family' + i).css('border', '3px dashed green') } //dotted green border
         }
         if (game.tablesCorrect['table1'] === 4 && game.tablesCorrect['table2'] === 4 && game.tablesCorrect['table3'] === 4 && game.tablesCorrect['table4'] === 4){ //if all of them are green
-            alert('all correct')
-            $('.token-seat').css('background-color','gold') // turn the spots gold
-        }
+            $('.token-seat').css('background-color','gold') } // turn the spots gold
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+            $('h1').eq(0).text('You win!!')
+            $('p').eq(0).hide()
 };
 game.currentMessage();
 var checkAnswer = function (seat) { //See if each token drop arrives at correct token-seats
@@ -46,8 +50,7 @@ var checkAnswer = function (seat) { //See if each token drop arrives at correct 
 };
 var activateTokenSeat = function (event, ui) { //Seats go to expanded state when user picks up tokens
     $('.token-seat').on('dropactivate', function(event, ui) {
-        $('.token-seat').css('height', '6em')
-    })
+        $('.token-seat').css('height', '6em') })
 };
 var deactivateTokenSeat = function (event, ui) { //Seats return to original state when user drops tokens
     $('.token-seat').on('dropdeactivate', function(event, ui) {
