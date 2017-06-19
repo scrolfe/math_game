@@ -17,7 +17,7 @@ Project 1
 * Javascript/JQuery
 ## What is unfinished?
 - There's some superfluous HTML I want to get rid of
--
+- There's an error that makes you 'win' after about 1 move - working on fix (06-19-17)!
 ## What I would like to expand on:
 - Make instructions and intro more user-friendly
 - Add scoring system
